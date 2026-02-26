@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 import './observability/instruments.ts';
 
 import * as Sentry from '@sentry/node';
