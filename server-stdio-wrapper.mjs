@@ -7,12 +7,25 @@
 import { spawn } from 'child_process';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
+import { config } from 'dotenv';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
+// Load environment variables from .env file
+config();
+
 // Set test mode to silence winston logger
 process.env.TEST_MODE = 'true';
+
+// Set default JWT_SECRET if not provided
+if (!process.env.JWT_SECRET) {
+  process.env.JWT_SECRET = 'devsecret_change_in_production_test';
+}
+
+if (!process.env.SESSION_SECRET) {
+  process.env.SESSION_SECRET = 'changeme_in_production_test';
+}
 
 // Suppress Node.js deprecation warnings
 process.noDeprecation = true;
@@ -24,7 +37,9 @@ const child = spawn('npx', ['tsx', serverPath], {
   stdio: ['inherit', 'inherit', 'inherit'],
   env: {
     ...process.env,
-    TEST_MODE: 'true'
+    TEST_MODE: 'true',
+    JWT_SECRET: process.env.JWT_SECRET,
+    SESSION_SECRET: process.env.SESSION_SECRET
   },
   shell: true
 });
