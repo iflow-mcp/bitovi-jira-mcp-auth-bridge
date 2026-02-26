@@ -1,0 +1,1 @@
+{"serverConfig": "{\"mcpServers\":{\"bitovi-cascade-mcp\":{\"command\":\"npx\",\"args\":[\"-y\",\"@iflow-mcp/bitovi-cascade-mcp\"],\"env\":{\"TEST_MODE\":\"true\"},\"values\":{}}}}"}

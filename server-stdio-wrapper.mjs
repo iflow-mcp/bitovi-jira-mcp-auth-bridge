@@ -4,7 +4,7 @@
  * This script loads the TypeScript file using the ts-node loader
  */
 
-import { register } from "node:module";
+import { createRequire } from 'node:module';
 import { pathToFileURL } from "node:url";
 import { config } from "dotenv";
 
@@ -26,8 +26,14 @@ console.info = (...args) => process.stderr.write(args.join(' ') + '\n');
 // Load environment variables first
 config();
 
-// Register TypeScript loader
-register("ts-node/esm", pathToFileURL("./"));
+// Get the directory where this script is located
+const require = createRequire(import.meta.url);
+const tsNodePath = require.resolve('ts-node/esm');
+const tsNodeDir = tsNodePath.substring(0, tsNodePath.lastIndexOf('/'));
+
+// Register TypeScript loader with explicit path
+import { register } from "node:module";
+register("ts-node/esm", pathToFileURL(tsNodeDir));
 
 // Import and run the actual server
 await import("./server/server-stdio.ts");

@@ -40,3 +40,18 @@
   2. utility-notifications - 诊断通知工具
 
 注意: 由于未提供OAuth凭据，只注册了工具，没有注册Atlassian/Figma/Google工具
+[$(date '+%Y-%m-%d %H:%M:%S')] [SUCCESS] Git推送: 成功推送iflow分支
+
+推送信息:
+- 远程仓库: https://github.com/iflow-mcp/bitovi-jira-mcp-auth-bridge
+- 分支: iflow
+- 提交: b70a40f
+- 提交信息: Add stdio transport support for MCP packaging
+[$(date '+%Y-%m-%d %H:%M:%S')] [SUCCESS] 上传官方仓库: npm包发布成功
+
+发布信息:
+- 包名: @iflow-mcp/bitovi-cascade-mcp
+- 版本: 1.1.0
+- npm地址: https://www.npmjs.com/package/@iflow-mcp/bitovi-cascade-mcp
+- tarball: https://registry.npmjs.org/@iflow-mcp/bitovi-cascade-mcp/-/bitovi-cascade-mcp-1.1.0.tgz
+- bin入口: iflow-mcp-bitovi-cascade-mcp
